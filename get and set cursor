@@ -1,0 +1,18 @@
+#include <iostream>
+#include <Windows.h>
+using namespace std;
+
+int main()
+{
+    POINT cur_pos;
+    GetCursorPos(&cur_pos); //получение расположения курсора
+    cout << "x " << &cur_pos.x << endl;
+    cout << "y " << &cur_pos.y << endl;
+   
+    
+    SetCursorPos(cur_pos.x , cur_pos.y); //изменение 
+    Sleep(2000);
+    mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0); //нажатие кнопки
+    mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+    
+}
