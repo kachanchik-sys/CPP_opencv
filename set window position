@@ -1,0 +1,77 @@
+// setwinpos.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//
+
+#include <iostream>
+#include "windows.h"
+using namespace std;
+
+int main()
+{
+    std::cout << "Start\n";//debg
+
+    HWND hwnd = FindWindow(NULL, (LPCWSTR)L"Калькулятор");//калькулятор it is calc. i use this just for exemple
+
+    if (hwnd != 0)                  //too dbg
+        cout << hwnd << endl;
+    else
+        cout << "window not found" << endl;
+
+
+
+    SetWindowPos(
+        hwnd,//window descriptor
+        HWND_BOTTOM,
+       
+     /*HWND_BOTTOM - Помещает окно внизу Z-последовательности. Если параметр hWnd идентифицирует самое верхнее окно, окно теряет своё самое верхнее состояние и помещается внизу всех других окон.
+    HWND_NOTOPMOST - Помещает окно перед всеми не в самыми верхними окнами (то есть позади всех самых верхних окон). Этот флажок не имеет никакого влияния, если окно - уже не самое верхнее окно.
+    HWND_TOP - Помещает окно наверху Z-последовательности.
+    HWND_TOPMOST - Помещает окно перед не самыми верхними окнами. Окно сохраняет свою самую верхнюю позицию даже тогда, когда оно неактивное.
+    
+    HWND_BOTTOM - Puts a window at the bottom of the Z sequence. If the hWnd parameter identifies the topmost window, the window loses its top state and is placed at the bottom of all other windows.
+    HWND_NOTOPMOST - Puts the window in front of all non top windows (i.e. behind all top windows). This checkbox has no effect, if the window is no longer the top window.
+    HWND_TOP - Puts the window at the top of the Z sequence.
+    HWND_TOPMOST - Puts the window in front of not the highest windows. The window keeps its highest position even when it is inactive. 
+
+Translated with www.DeepL.com/Translator (free version)*/
+        1, //x pos
+        1, //y pos
+        NULL,
+        NULL,
+        SWP_NOSIZE
+
+        /*
+    SWP_DRAWFRAME - Выводит рамку (определенную в описании класса окна) вокруг окна.
+    SWP_FRAMECHANGED - Посылает сообщение WM_NCCALCSIZE окну, даже тогда, когда размер окна не изменяется. Если этот флажок не установлен, WM_NCCALCSIZE посылается только тогда, когда размер окна изменяется.
+    SWP_HIDEWINDOW - Скрывает окно.
+    SWP_NOACTIVATE - Не активизирует окно. Если этот флажок не установлен, окно активизируется и перемещается в верхнюю часть или самой верхней, или не самой верхней группы (в зависимости от установки параметра hWndInsertAfter).
+    SWP_NOCOPYBITS - Сбрасывает все содержание рабочей области. Если этот флажок не установлен, допустимое содержание рабочей области сохраняется и копируется обратно в рабочую область после того, как окно установлено по размеру или переустановлено.
+    SWP_NOMOVE - Сохраняет текущую позицию (игнорирует X и Y параметры).
+    SWP_NOOWNERZORDER - Не изменяет позицию окна владельца в Z-последовательности.
+    SWP_NOREDRAW - Не перерисовывает изменения. Если этот флажок установлен, то не происходит никакой перерисовки любого вида. Это применяется к рабочей области, нерабочей области (включая строку заголовка и линейки прокрутки) и любую часть родительского окна, раскрытого в результате перемещения окна. Когда этот флажок установлен, прикладная программа должна явно лишить законной силы или перерисовывать любые части окна и родительского окна, которые требуют перерисовки.
+    SWP_NOREPOSITION - То же самое, что и флажок SWP_NOOWNERZORDER.
+    SWP_NOSENDCHANGING - Предохраняет окно от приема сообщения WM_WINDOWPOSCHANGING.
+    SWP_NOSIZE - Сохраняет текущий размер (игнорирует cx и cy параметры).
+    SWP_NOZORDER - Сохраняет текущую Z-последовательность (игнорирует параметр hWndInsertAfter).
+    SWP_SHOWWINDOW - Отображает окно. 
+    
+    
+    SWP_DRAWFRAME - Outputs a frame (defined in the description of the window class) around the window.
+    SWP_FRAMECHANGED - Sends a WM_NCCALCSIZE message to the window, even if the window size does not change. If this box is not checked, WM_NCCALCSIZE is sent only when the window size changes.
+    SWP_HIDEWINDOW - Hides the window.
+    SWP_NOACTIVATE - Does not activate the window. If this checkbox is not checked, the window is activated and moved to the upper part of either the uppermost or not the uppermost group (depending on the hWndInsertAfter parameter setting).
+    SWP_NOCOPYBITS - Resets all content of the workspace. If this option is unchecked, the allowed workspace content is saved and copied back to the workspace after the window is resized or reinstalled.
+    SWP_NOMOVE - Saves the current position (ignores X and Y parameters).
+    SWP_NOOWNERZORDER - Does not change the owner window position in the Z sequence.
+    SWP_NOREDRAW - Does not repaint changes. If this checkbox is checked, no repaint of any kind will take place. This applies to the workspace, the non-workspace (including the title bar and the scroll bar), and any part of the parent window that is opened by moving the window. When this checkbox is checked, the application must explicitly invalidate or repaint any part of the window and the parent window that requires repainting.
+    SWP_NOREPOSITION is the same as the SWP_NOOWNERZORDER checkbox.
+    SWP_NOSENDCHANGING - Prevents the window from receiving WM_WINDOWPOSCHANGING.
+    SWP_NOSIZE - Saves the current size (ignores cx and cy parameters).
+    SWP_NOZORDER - Saves the current Z-sequence (ignores hWndInsertAfter parameter).
+    SWP_SHOWWINDOW - Displays the window. 
+
+Translated with www.DeepL.com/Translator (free version)*/
+        );
+
+
+}
+
