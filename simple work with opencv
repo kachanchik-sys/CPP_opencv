@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-	string PathToImg = "C:\\Users\\admin\\Pictures\\hih.jpg";
+	string PathToImg = "C:\\Users\\admin\\Pictures\\hih.jpg"; //add your path
 	Mat MatrixOfImg = imread(PathToImg); //just make a matrix of img like {225, 134 , 55,.....}
 	//cout << hui << endl; I added this line for the sake of experimentation
 	imshow("Image", MatrixOfImg); // sintax: img show ("title of window", mat)
