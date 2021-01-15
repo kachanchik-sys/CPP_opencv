@@ -1,0 +1,23 @@
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <iostream>
+
+using namespace cv;
+using namespace std;
+
+int main()
+{
+	string PathToImg = "C:\\Users\\admin\\Pictures\\imgForOpencv.png";
+
+	Mat IMG = imread(PathToImg);
+	Mat IMGresize;
+	resize(IMG, IMGresize, Size(IMG.size()/2)); //make an image that is halved in size.  Syntax original img, resixet img, size(). you can you can specify the size in pixels or work with the original resolution
+	imshow("suka", IMG);
+	imshow("euka1", IMGresize);
+	cout << endl << IMG.size() << endl;
+
+	waitKey(0);
+return 0
+}
