@@ -1,0 +1,45 @@
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/objdetect.hpp>
+#include <iostream>
+
+using namespace cv;
+using namespace std;
+
+int main()
+{
+	VideoCapture VideoCap(0); //select cam (i dont know how it work)
+	Mat VideoImg;//matrix for img
+	//source
+
+	
+	while (true)  //stupid cicle, not recomendet for use
+	{
+		VideoCap.read(VideoImg); //puts the image from the webcam into a matrix
+		
+
+		CascadeClassifier faceCascade;  //class for oject detection
+		faceCascade.load("C:/Libs/opencv/build/etc/haarcascades/haarcascade_frontalface_default.xml");  //path to xml in library 
+		if (faceCascade.empty()) { cout << "fuck you" << endl; } //dbg massage 
+
+		vector<Rect> faces;
+		faceCascade.detectMultiScale(VideoImg, faces, 1.1, 10);   //Magic, if change last int you can adjust sensitivity
+
+		for (int i = 0; i < faces.size(); i++)
+		{
+			rectangle(VideoImg, faces[i].tl(),faces[i].br(), Scalar(0, 255, 0), 3); //draw square on face, scalar change color by BGR
+		}
+		
+		
+		imshow("web cam", VideoImg);
+    
+    waitKey(1);
+    }
+	return 0;
+}
+
+
+
+
